@@ -244,6 +244,28 @@ async function saveNewNumber() {
 
   const participantAddress = '0x5DB7ABDD587B69C0887f5704855e500D7C609491'; // Replace with the desired participant address
   fetchParticipantBets(participantAddress);
+  createNewBet("",true,0.01)
+}
+
+async function createNewBet(betString, selfDirected, valueInWei) {
+	 betString = 'Sample bet';
+	 selfDirected = true;
+	 valueInWei = web3.utils.toWei('0.001', 'ether'); // Replace 0.1 with the desired amount in BNB
+
+  try {
+    const accounts = await web3.eth.getAccounts();
+    await contract.methods.createBet(betString, selfDirected).send({
+      from: accounts[0],
+      value: valueInWei
+    });
+	  document.getElementById('call-response').innerText = 'Bet created successfully';
+
+    console.log('Bet created successfully');	
+  } catch (error) {
+	    document.getElementById('call-response').innerText = 'Error: '+error;
+
+    console.error('Failed to create bet:', error.message);
+  }
 }
 
 (async function init() {
