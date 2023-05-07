@@ -234,9 +234,14 @@ async function fetchParticipantBets(address) {
 
 async function saveNewNumber() {
   const ownerAddress = await getOwnerAddress();
-  const feePercentage = await getFeePercentage();
-  const betId = 2; // Replace with the desired bet ID
+  document.getElementById('owner-address').innerText = 'Wallet address: '+ownerAddress;
+  const feePercentage = await getFeePercentage();  
+  document.getElementById('fee-Percentage').innerText = 'Fee: '+feePercentage + '%';
+
+  const betId = 1; // Replace with the desired bet ID
   const betString = await getBetString(betId);
+  document.getElementById('bet-string').innerText = 'Bet text: '+betString;
+
   const participantAddress = '0x5DB7ABDD587B69C0887f5704855e500D7C609491'; // Replace with the desired participant address
   fetchParticipantBets(participantAddress);
 }
