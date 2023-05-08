@@ -128,7 +128,7 @@ async function checkWalletConnection(account) {
 
 async function switchToBSC() {
   //const chainId = '0x38'; // Binance Smart Chain Mainnet Chain ID
-  const chainId = '0x61'; // Binance Smart Chain Testnet Chain ID
+  //const chainId = '0x61'; // Binance Smart Chain Testnet Chain ID
 
   // const bscMainnetParams = {
     // chainId: chainId,
@@ -142,9 +142,10 @@ async function switchToBSC() {
     // blockExplorerUrls: ['https://bscscan.com/'],
   // };
   
+	const chainId = web3.utils.toHex('97');
     const bscMainnetParams = {
 
-      chainId: '0x61',
+      chainId: chainId, //'0x61',
       chainName: 'Binance Smart Chain Testnet',
       nativeCurrency: {
         name: 'BNB',
