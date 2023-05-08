@@ -193,6 +193,8 @@ async function connectWallet() {
 
     return accounts[0];
   } catch (error) {
+	document.getElementById('call-response').innerText = error.message+error.code;
+
     console.error('Failed to connect wallet:', error.message);
     return false;
   }
