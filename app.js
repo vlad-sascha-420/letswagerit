@@ -175,7 +175,7 @@ async function switchToBSC() {
         console.error('Failed to add Binance Smart Chain:', addError.message);
       }
     } else {
-	document.getElementById('call-response').innerText = error.message;
+	document.getElementById('call-response').innerText = error.message+error.code;
 
       console.error('Failed to switch to Binance Smart Chain:', error.message);
     }
