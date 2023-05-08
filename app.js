@@ -128,7 +128,7 @@ async function checkWalletConnection(account) {
 
 async function switchToBSC() {
   //const chainId = '0x38'; // Binance Smart Chain Mainnet Chain ID
-  //const chainId = '0x61'; // Binance Smart Chain Testnet Chain ID
+  const chainId = '0x61'; // Binance Smart Chain Testnet Chain ID
 
   // const bscMainnetParams = {
     // chainId: chainId,
@@ -142,10 +142,9 @@ async function switchToBSC() {
     // blockExplorerUrls: ['https://bscscan.com/'],
   // };
   
-	const chainId = web3.utils.toHex('97');
     const bscMainnetParams = {
 
-      chainId: chainId, //'0x61',
+      chainId: chainId,
       chainName: 'Binance Smart Chain Testnet',
       nativeCurrency: {
         name: 'BNB',
@@ -163,7 +162,7 @@ async function switchToBSC() {
       params: [{ chainId }],
     });
   } catch (error) {
-    if (error.code === 4902) {
+    if (error.code === 4902||(chainId='0x61'&&error.code===-32603)) {
       // Chain not added, try adding it
       try {
         await window.ethereum.request({
@@ -171,6 +170,8 @@ async function switchToBSC() {
           params: [bscMainnetParams],
         });
         console.log('Binance Smart Chain Mainnet added to wallet');
+			document.getElementById('call-response').innerText = 'Binance Smart Chain Mainnet added to wallet';
+
       } catch (addError) {
         console.error('Failed to add Binance Smart Chain:', addError.message);
       }
