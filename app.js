@@ -118,6 +118,7 @@ async function checkWalletConnection(account) {
     console.log(`Wallet connected: ${walletType}`);
     return true;
   } else {
+	  connectWallet();
     console.log('Please connect your wallet.');
     return false;
   }
@@ -194,7 +195,7 @@ async function connectWallet() {
 async function initializeApp() {
   if (await checkWalletConnection()) {
     await switchToBSC();
-    saveNewNumber();
+    //saveNewNumber();
   }
 }
 
@@ -270,6 +271,7 @@ async function createNewBet(betString, selfDirected, valueInWei) {
 
 (async function init() {
   if (checkWeb3Support()) {
+	  initializeApp();
     const connectWalletButton = document.getElementById('connect-wallet');
     connectWalletButton.addEventListener('click', connectWallet);
   }
