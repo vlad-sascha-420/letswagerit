@@ -118,6 +118,8 @@ async function checkWalletConnection(account) {
     console.log(`Wallet connected: ${walletType}`);
     return true;
   } else {
+	  	    document.getElementById('call-response').innerText = 'Please connect your wallet.';
+
 	  connectWallet();
     console.log('Please connect your wallet.');
     return false;
@@ -172,6 +174,8 @@ async function switchToBSC() {
         console.error('Failed to add Binance Smart Chain:', addError.message);
       }
     } else {
+	document.getElementById('call-response').innerText = error.message;
+
       console.error('Failed to switch to Binance Smart Chain:', error.message);
     }
   }
