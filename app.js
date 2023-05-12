@@ -288,7 +288,10 @@ async function createNewBet(betString, selfDirected, valueInWei) {
 	  document.getElementById('bet-string').innerText = '1';
 
   }
-  else{
+  else {
+	  // If no injected web3 instance is detected, fallback to Infura
+  web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/f7ab13bd29354de388437225dddee2a2"));
+
 	document.getElementById('bet-string').innerText = 'No web3 support';
   }
 })();
