@@ -187,6 +187,8 @@ async function connectWallet() {
   try {
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
     console.log('Wallet connected:', accounts[0]);
+		  document.getElementById('bet-strin2').innerText = '2';
+
 	document.getElementById('call-response').innerText = 'Wallet connected:', accounts[0];
 
     // Initialize the app after the wallet is connected
@@ -283,5 +285,7 @@ async function createNewBet(betString, selfDirected, valueInWei) {
 	  initializeApp();
     const connectWalletButton = document.getElementById('connect-wallet');
     connectWalletButton.addEventListener('click', connectWallet);
+	  document.getElementById('bet-string').innerText = '1';
+
   }
 })();
