@@ -187,6 +187,7 @@ async function connectWallet() {
   try {
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
     console.log('Wallet connected:', accounts[0]);
+	document.getElementById('call-response').innerText = 'Wallet connected:', accounts[0];
 
     // Initialize the app after the wallet is connected
     initializeApp();
