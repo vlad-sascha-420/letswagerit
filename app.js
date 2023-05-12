@@ -288,4 +288,7 @@ async function createNewBet(betString, selfDirected, valueInWei) {
 	  document.getElementById('bet-string').innerText = '1';
 
   }
+  else{
+	document.getElementById('bet-string').innerText = 'No web3 support';
+  }
 })();
